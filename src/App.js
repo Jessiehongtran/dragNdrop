@@ -16,14 +16,21 @@ function App() {
 
   const handleDrag = useCallback(({translation, id}) => {
     const delta = Math.round(translation.y/HEIGHT);
+    // console.log('translation.y', translation.y, 'HEIGHT', HEIGHT, 'delta', delta)
     const index = state.order.indexOf(id);
     const dragOrder = state.order.filter(index => index !== id)
+
+    console.log('id', id, 'index', index, 'delta', delta )
+
+    console.log('dragOrder before', dragOrder)
 
     if (! inRange(index + delta, 0, items.length)){
       return 
     }
 
     dragOrder.splice(index + delta, 0, id);
+
+    console.log('dragOrder after', dragOrder)
 
     setState(state => ({
       ...state,

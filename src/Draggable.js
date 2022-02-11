@@ -9,6 +9,7 @@ const Draggable = ({children, onDrag, onDragEnd, id}) => {
     })
 
     const handleMouseDown = useCallback(({clientX, clientY}) => {
+        // console.log('down', 'clientX', clientX, 'clientY', clientY)
         setState(state => ({
             ...state,
             isDragging: true,
@@ -18,7 +19,8 @@ const Draggable = ({children, onDrag, onDragEnd, id}) => {
 
     const handleMouseMove = useCallback(({clientX, clientY}) => {
         const translation = { x: clientX - state.origin.x, y: clientY - state.origin.y }
-        
+        // console.log('move', 'x', state.origin.x, 'clientX', clientX)
+        // console.log('move', 'y', state.origin.y, 'clientY', clientY)
         setState(state => ({
             ...state,
             translation
